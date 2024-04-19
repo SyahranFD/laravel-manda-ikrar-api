@@ -8,4 +8,28 @@ use Illuminate\Database\Eloquent\Model;
 class Order extends Model
 {
     use HasFactory;
+
+    public $incrementing = false;
+
+    protected $fillable = [
+        'id',
+        'user_id',
+        'status',
+        'metode_pembayaran',
+        'total_keseluruhan',
+    ];
+
+    protected $casts = [
+        'total_keseluruhan' => 'integer',
+    ];
+
+    public function user()
+    {
+        return $this->belongsTo(User::class);
+    }
+
+    public function orderItems()
+    {
+        return $this->hasMany(OrderItem::class);
+    }
 }

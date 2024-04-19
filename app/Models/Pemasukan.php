@@ -8,4 +8,15 @@ use Illuminate\Database\Eloquent\Model;
 class Pemasukan extends Model
 {
     use HasFactory;
+
+    public $incrementing = false;
+
+    protected $fillable = [
+        'id',
+        'total',
+    ];
+
+    protected $casts = [
+        'total' => 'integer',
+    ];
 }

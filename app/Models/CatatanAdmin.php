@@ -8,4 +8,11 @@ use Illuminate\Database\Eloquent\Model;
 class CatatanAdmin extends Model
 {
     use HasFactory;
+
+    public $incrementing = false;
+
+    protected $fillable = [
+        'id',
+        'catatan',
+    ];
 }

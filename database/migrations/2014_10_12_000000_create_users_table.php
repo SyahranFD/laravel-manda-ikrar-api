@@ -16,7 +16,6 @@ return new class extends Migration
             $table->string('nama_lengkap');
             $table->string('email');
             $table->string('password');
-            $table->string('role');
             $table->string('profile_picture')->nullable()->default(null);
             $table->timestamps();
         });

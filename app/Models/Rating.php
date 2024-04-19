@@ -8,4 +8,24 @@ use Illuminate\Database\Eloquent\Model;
 class Rating extends Model
 {
     use HasFactory;
+
+    public $incrementing = false;
+
+    protected $fillable = [
+        'id',
+        'user_id',
+        'menu_id',
+        'rating',
+        'komentar',
+    ];
+    
+    public function user()
+    {
+        return $this->belongsTo(User::class);
+    }
+
+    public function menu()
+    {
+        return $this->belongsTo(Menu::class);
+    }
 }

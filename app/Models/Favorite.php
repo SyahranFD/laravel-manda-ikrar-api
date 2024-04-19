@@ -8,4 +8,22 @@ use Illuminate\Database\Eloquent\Model;
 class Favorite extends Model
 {
     use HasFactory;
+
+    public $incrementing = false;
+
+    protected $fillable = [
+        'id',
+        'menu_id',
+        'user_id',
+    ];
+
+    public function menu()
+    {
+        return $this->belongsTo(Menu::class);
+    }
+
+    public function user()
+    {
+        return $this->belongsTo(User::class);
+    }
 }
