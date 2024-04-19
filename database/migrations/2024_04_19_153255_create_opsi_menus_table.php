@@ -11,14 +11,13 @@ return new class extends Migration
      */
     public function up(): void
     {
-        Schema::create('users', function (Blueprint $table) {
+        Schema::create('opsi_menus', function (Blueprint $table) {
             $table->string('id')->primary();
-            $table->string('nama_lengkap');
-            $table->string('email');
-            $table->string('password');
-            $table->string('role');
-            $table->string('profile_picture')->nullable()->default(null);
+            $table->string('menu_id');
+            $table->string('opsi');
             $table->timestamps();
+
+            $table->foreign('menu_id')->references('id')->on('menus')->onDelete('cascade');
         });
     }
 
@@ -27,6 +26,6 @@ return new class extends Migration
      */
     public function down(): void
     {
-        Schema::dropIfExists('users');
+        Schema::dropIfExists('opsi_menus');
     }
 };

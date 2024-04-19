@@ -11,14 +11,14 @@ return new class extends Migration
      */
     public function up(): void
     {
-        Schema::create('users', function (Blueprint $table) {
+        Schema::create('favorites', function (Blueprint $table) {
             $table->string('id')->primary();
-            $table->string('nama_lengkap');
-            $table->string('email');
-            $table->string('password');
-            $table->string('role');
-            $table->string('profile_picture')->nullable()->default(null);
+            $table->string('user_id');
+            $table->string('menu_id');
             $table->timestamps();
+
+            $table->foreign('user_id')->references('id')->on('users')->onDelete('cascade');
+            $table->foreign('menu_id')->references('id')->on('menus')->onDelete('cascade');
         });
     }
 
@@ -27,6 +27,6 @@ return new class extends Migration
      */
     public function down(): void
     {
-        Schema::dropIfExists('users');
+        Schema::dropIfExists('favorites');
     }
 };
